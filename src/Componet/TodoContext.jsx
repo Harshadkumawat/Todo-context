@@ -6,7 +6,6 @@ const TodoContext = createContext();
 export const TodoProvider = ({ children }) => {
   const [todos, setTodos] = useState([]);
   const [edit, setEdit] = useState({ todo: {}, isEdit: false });
-  
 
   const addTodo = (title, description) => {
     setTodos([{ id: crypto.randomUUID(), title, description }, ...todos]);
@@ -23,7 +22,6 @@ export const TodoProvider = ({ children }) => {
     setEdit({ todo: todo, isEdit: true });
   };
 
-  
   // Update Todo
   const updateTodo = (updatedTodo) => {
     setTodos(
@@ -32,10 +30,10 @@ export const TodoProvider = ({ children }) => {
     setEdit({ todo: {}, isEdit: false });
   };
 
-  
-
   return (
-    <TodoContext.Provider value={{ todos, edit,  addTodo , removeTodo , editTodo , updateTodo }}>
+    <TodoContext.Provider
+      value={{ todos, edit, addTodo, removeTodo, editTodo, updateTodo }}
+    >
       {children}
     </TodoContext.Provider>
   );
